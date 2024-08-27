@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <!-- One Page Checkout with Login step -->
+    <checkout name="onepage_login"
+              label="Hyvä One Page: With login"
+              layout="3columns"
+              parent="onepage"
+    >
+        <step name="onepage" label="One Page" layout="3columns">
+            <update handle="hyva_checkout_default_virtual" if="is_virtual"/>
+            <update handle="hyva_checkout_default_customer" if="is_customer"/>
+
+            <update handle="hyva_checkout_onepage_login_login" if="Elgentos\HyvaCheckoutOnePageWithLoginStep\Model\Checkout\StepCondition\CheckIfGuestOrdering"/>
+        </step>
+    </checkout>
+</config>

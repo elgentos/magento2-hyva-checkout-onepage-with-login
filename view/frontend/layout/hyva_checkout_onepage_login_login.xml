@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <update handle="customer_account_login"/>
+    <update handle="prismicio_static_footer_bottom" />
+
+    <body>
+        <attribute name="class" value="bg-white"/>
+
+        <referenceBlock name="footer-container" remove="false" />
+        <referenceBlock name="prismicio.header.slices.usps" remove="false" />
+
+        <referenceBlock name="hyva.checkout.breadcrumbs" remove="true" />
+        <referenceBlock name="hyva-checkout.back-button" remove="true" />
+
+        <referenceBlock name="prismicio.newsletter_signup.wrapper" remove="true" />
+        <referenceBlock name="global_notice.wrapper" remove="true" />
+
+        <!-- Move the full login block into the main column -->
+        <move element="customer.login.container" destination="column.main"/>
+        <referenceBlock name="hyva-checkout-main" remove="true"/>
+
+        <!-- Remove the "Sign in / Register" link since we are on the login / registration step -->
+        <referenceBlock name="breadcrumbs.additional.signin-register" remove="true"/>
+
+        <referenceBlock name="login_and_register" template="Elgentos_HyvaCheckoutOnePageWithLoginStep::login-and-register.phtml">
+
+            <referenceBlock name="customer_form_login">
+                <block name="form_additional_title_description" template="Elgentos_HyvaCheckoutOnePageWithLoginStep::description.phtml"/>
+            </referenceBlock>
+
+            <referenceBlock name="customer.new">
+                <block name="register_additional_content" template="Elgentos_HyvaCheckoutOnePageWithLoginStep::guest.phtml"/>
+            </referenceBlock>
+        </referenceBlock>
+    </body>
+</page>
